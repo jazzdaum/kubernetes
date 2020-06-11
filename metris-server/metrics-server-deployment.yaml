@@ -29,11 +29,11 @@ spec:
         emptyDir: {}
       containers:
       - name: metrics-server
-        image: registry.aliyuncs.com/google_containers/metrics-server-amd64:v0.3.6
+        image: registry.aliyuncs.com/google_containers/metrics-server-amd64:v0.3.6  # 修改为国内镜像地址
         command:
         - /metrics-server
-        - --kubelet-insecure-tls
-        - --kubelet-preferred-address-types=InternalIP
+        - --kubelet-insecure-tls  # 跳过证书校验
+        - --kubelet-preferred-address-types=InternalIP # 访问集群的hostname的时候可以解析到对应的ip
         args:
           - --cert-dir=/tmp
           - --secure-port=4443
